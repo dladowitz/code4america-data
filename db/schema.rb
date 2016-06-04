@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325180941) do
+ActiveRecord::Schema.define(version: 20160604185851) do
 
   create_table "password_resets", force: :cascade do |t|
     t.integer  "user_id"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20150325180941) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "violations", force: :cascade do |t|
+    t.integer  "inspection_id"
+    t.string   "category"
+    t.date     "violation_date"
+    t.date     "violation_closed_date"
+    t.string   "type"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
 end
