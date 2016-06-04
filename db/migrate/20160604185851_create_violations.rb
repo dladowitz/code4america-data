@@ -4,8 +4,8 @@ class CreateViolations < ActiveRecord::Migration
       t.integer :inspection_id
       t.string :category
       t.date :violation_date
-      t.date :violation_closed_date
-      t.string :type
+      t.date :violation_date_closed
+      t.string :violation_type
 
       t.timestamps null: false
     end
