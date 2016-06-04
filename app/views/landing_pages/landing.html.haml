@@ -5,13 +5,21 @@
         .container
           .main_content.pt10.pb40.col-sm-8.col-sm-offset-2
             %h1.section-title
-              %span Welcome to LaunchIt
-            %h2
-              You're going to be famous
-            .mt20
-              %span.mr40.fa.fa-bolt.fa-5x
-              %span.mr40.fa.fa-cloud.fa-5x
-              %span.fa.fa-code.fa-5x
+              %span Violation Statistics
+
+            %h3
+              %table.center
+                %tr
+                  %th.strong Category
+                  %th.strong Count
+                - @category_stats.each do |category, count|
+                  %tr
+                    %td= category
+                    %td= count
+
+            -#   %span.mr40.fa.fa-bolt.fa-5x
+            -#   %span.mr40.fa.fa-cloud.fa-5x
+            -#   %span.fa.fa-code.fa-5x
 
   %section.section.section-center.section-cta.pt10.pb20
     .container
