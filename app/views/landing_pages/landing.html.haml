@@ -1,25 +1,27 @@
 %main#main.site-main
   %section#carousel-1.carousel.slide.section-slide{"data-ride" => "carousel"}
     .carousel-inner
-      .item.active{:style => "background: url(assets/background/dusty_wide_dark_2.jpg);"}
+      .item.active{:style => "background: url(assets/background/sanfrancisco-skyline.jpg);"}
         .container
           .main_content.pt10.pb40.col-sm-8.col-sm-offset-2
             %h1.section-title
               %span Violation Statistics
 
             %h3
-              %table.center
-                %tr
-                  %th.strong Category
-                  %th.strong Count
-                - @category_stats.each do |category, count|
+              %table.table.table-hover
+                %thead
                   %tr
-                    %td= category
-                    %td= count
-
-            -#   %span.mr40.fa.fa-bolt.fa-5x
-            -#   %span.mr40.fa.fa-cloud.fa-5x
-            -#   %span.fa.fa-code.fa-5x
+                    %th.center Category
+                    %th.center Count
+                    %th.center Earliest
+                    %th.center Latest
+                %tbody
+                  - @category_stats.each do |stat|
+                    %tr
+                      %td= stat[:category]
+                      %td= stat[:count]
+                      %td= stat[:earliest].strftime("%b %d %Y")
+                      %td= stat[:latest].strftime("%b %d %Y")
 
   %section.section.section-center.section-cta.pt10.pb20
     .container

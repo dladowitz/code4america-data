@@ -1,18 +1,17 @@
 class LandingPagesController < ApplicationController
 
   def landing
-    @category_stats = {}
-    find_category_stats
+    create_category_stats
     render layout: "guest_pages/guest_layout"
   end
 end
 
-def find_category_stats
-  Violation.all.each do |violation|
-    if @category_stats[violation.category]
-      @category_stats[violation.category] += 1
-    else
-      @category_stats[violation.category] = 1
-    end
+def create_category_stats
+  categories = Violation.pluck(:category).uniq
+  @category_stats = []
+  categories.each do |category|
+    category_violations = Violation.where(category: category).order(:violation_date)
+    stat = {category: category, count: category_violations.count, earliest: category_violations.first.violation_date, latest: category_violations.last.violation_date }
+    @category_stats << stat
   end
 end
